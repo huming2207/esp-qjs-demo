@@ -1,0 +1,3 @@
+[submodule "components/quickjs-esp32"]
+	path = components/quickjs-esp32
+	url = https://github.com/huming2207/quickjs-esp32

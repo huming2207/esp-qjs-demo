@@ -61,12 +61,22 @@ void app_main(void)
     JS_AddIntrinsicMapSet(ctx);
     JS_AddIntrinsicTypedArrays(ctx);
     JS_AddIntrinsicPromise(ctx);
+
+    printf("Free heap after QJS modules added: %d bytes\n", esp_get_minimum_free_heap_size());
+
     js_std_add_helpers(ctx, 0, NULL);
     js_std_eval_binary(ctx, qjsc_test, qjsc_test_size, 0);
+
+    printf("Free heap after QJS binary added: %d bytes\n", esp_get_minimum_free_heap_size());
+
     js_std_loop(ctx);
+
+    printf("Free heap after QJS loop started: %d bytes\n", esp_get_minimum_free_heap_size());
+
     JS_FreeContext(ctx);
     JS_FreeRuntime(rt);
 
+    printf("Free heap after QJS freed: %d bytes\n", esp_get_minimum_free_heap_size());
 
     vTaskDelay(portMAX_DELAY);
 }

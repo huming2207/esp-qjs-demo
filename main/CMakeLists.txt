@@ -1,2 +1,2 @@
-idf_component_register(SRCS "hello_world_main.c"
-                    INCLUDE_DIRS "")
+idf_component_register(SRCS "qjs_demo_main.cpp"
+                    INCLUDE_DIRS ".")
